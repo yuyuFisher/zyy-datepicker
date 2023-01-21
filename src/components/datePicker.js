@@ -9,6 +9,8 @@ export default function DatePicker() {
   const date = defaultDate.getDate();
   const DateRender = `${year}-${month}-${date}`;
   const [isClose, setIsClose] = useState(false);
+  const placeholder = '选择日期';
+  const [dateString, setDateString] = useState(DateRender);
 
   function handleOver() {
     setIsClose(true);
@@ -18,12 +20,29 @@ export default function DatePicker() {
     setIsClose(false);
   }
 
+  function handleClear() {
+    setDateString('');
+  }
+
   return (
-    <header className="head-calendar">
-      <label>{DateRender}</label>
-      <svg className="icon" aria-hidden="true" onMouseOver={handleOver} onMouseLeave={handleLeave}>
+    <div className="head-calendar">
+      <input
+        type="text"
+        autoComplete="off"
+        placeholder={placeholder}
+        className="dt-input"
+        disabled
+        value={dateString}
+      />
+      <svg
+        className="icon"
+        aria-hidden="true"
+        onMouseOver={handleOver}
+        onMouseLeave={handleLeave}
+        onClick={handleClear}
+      >
         <use xlinkHref={isClose ? '#icon-close' : '#icon-calendar'} />
       </svg>
-    </header>
+    </div>
   );
 }
