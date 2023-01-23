@@ -13,7 +13,7 @@ export default function DatePicker() {
   const [dateString, setDateString] = useState(DateRender);
 
   function handleOver() {
-    setIsClose(true);
+    setIsClose(dateString !== '');
   }
 
   function handleLeave() {
