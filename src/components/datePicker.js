@@ -27,7 +27,7 @@ export default function DatePicker(props) {
   }; */
 
   return (
-    <header className="head-input" ref={rootRef}>
+    <header className="head" ref={rootRef}>
       <input
         className="date-input"
         type="text"
