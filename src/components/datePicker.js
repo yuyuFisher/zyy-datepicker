@@ -5,6 +5,7 @@ import {
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { formatDate, getDomParents, uuid } from '../utils/util';
+import Popup from './Popup/popup';
 
 export default function DatePicker(props) {
   const {
@@ -49,8 +50,18 @@ export default function DatePicker(props) {
     setPopupVisible(true);
   };
 
+  const getPopupPosition = () => {
+    const pos = { left: 0, top: 0 };
+    if (rootRef.current) {
+      const rect = rootRef.current.getBoundingClientRect();
+      pos.left = rect.left;
+      pos.top = rect.top + 40;
+    }
+    return pos;
+  };
+
   return (
-    <header className="head" ref={rootRef} onClick={handleDatepickerClick}>
+    <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
       <input
         className="date-input"
         type="text"
@@ -67,7 +78,8 @@ export default function DatePicker(props) {
         <span className="iconfont icon-calendar" />
         <span className="iconfont icon-close" onClick={handleClear} />
       </span>
-    </header>
+      <Popup visible={popupVisible} popupPosition={getPopupPosition} />
+    </section>
   );
 }
 
