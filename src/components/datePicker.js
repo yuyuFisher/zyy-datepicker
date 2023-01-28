@@ -4,7 +4,7 @@ import {
 } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import formatDate from '../utils/util';
+import { formatDate, getDomParents, uuid } from '../utils/util';
 
 export default function DatePicker(props) {
   const {
@@ -14,7 +14,9 @@ export default function DatePicker(props) {
   } = props;
   const [value, setValue] = useState(defaultValue);
   const rootRef = useRef(null);
+  const panelIdRef = useRef(uuid('date'));
   const dateString = useMemo(() => (value ? formatDate(value) : ''), [value]);
+  const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
     onChange?.(value);
@@ -24,6 +26,23 @@ export default function DatePicker(props) {
     setValue('');
     e.stopPropagation();
   };
+
+  useEffect(() => {
+    const callback = (e) => {
+      const panelDiv = document.querySelector(`#${panelIdRef.current}`);
+      const paths = getDomParents(e.target);
+      const isClickAway = !paths.includes(rootRef.current) && !paths.includes(panelDiv);
+
+      if (isClickAway) {
+        setPopupVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', callback);
+    return () => {
+      document.removeEventListener('mousedown', callback);
+    };
+  }, []);
 
   return (
     <header className="head" ref={rootRef}>
