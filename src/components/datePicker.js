@@ -4,7 +4,7 @@ import {
 } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { formatDate } from '../utils/util';
+import formatDate from '../utils/util';
 
 export default function DatePicker(props) {
   const {

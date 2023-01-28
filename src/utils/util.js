@@ -1,8 +1,6 @@
-export function formatDate(date) {
+export default function formatDate(date) {
   if (!date) {
     return '';
   }
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
-
-export default { formatDate };
