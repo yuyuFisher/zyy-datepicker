@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import './popup.css';
 
 export default function Popup(props) {
   const { visible, getPopupPosition, children } = props;
