@@ -1,6 +1,6 @@
 import '../styles/datePicker.css';
 import {
-  useEffect, useMemo, useRef,
+  useEffect, useMemo, useRef, useState,
 } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
@@ -12,8 +12,7 @@ export default function DatePicker(props) {
     defaultValue = new Date(),
     onChange,
   } = props;
-  const value = defaultValue;
-  // const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue);
   const rootRef = useRef(null);
   const dateString = useMemo(() => (value ? formatDate(value) : ''), [value]);
 
@@ -21,10 +20,10 @@ export default function DatePicker(props) {
     onChange?.(value);
   }, [value]);
 
-  /* const handleClear = (e) => {
+  const handleClear = (e) => {
     setValue('');
     e.stopPropagation();
-  }; */
+  };
 
   return (
     <header className="head" ref={rootRef}>
@@ -42,7 +41,7 @@ export default function DatePicker(props) {
         })}
       >
         <span className="iconfont icon-calendar" />
-        <span className="iconfont icon-close" />
+        <span className="iconfont icon-close" onClick={handleClear} />
       </span>
     </header>
   );

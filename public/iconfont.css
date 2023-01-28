@@ -15,7 +15,7 @@
   right: 0;
   top: 4px;
   text-align: center;
-  /*color: #bfcbd9;*/
+  color: #bfcbd9;
   transition: all .3s;
 }
 
@@ -45,7 +45,7 @@
 
 .calendar-show:hover .icon-close {
   display: inline-flex;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .calendar-show:hover .icon-calendar {
