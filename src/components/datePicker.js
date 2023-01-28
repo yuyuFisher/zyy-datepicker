@@ -78,7 +78,7 @@ export default function DatePicker(props) {
         <span className="iconfont icon-calendar" />
         <span className="iconfont icon-close" onClick={handleClear} />
       </span>
-      <Popup visible={popupVisible} popupPosition={getPopupPosition} />
+      <Popup visible={popupVisible} getpopupPosition={getPopupPosition} />
     </section>
   );
 }
