@@ -24,6 +24,7 @@ export default function DatePicker(props) {
 
   const handleClear = (e) => {
     setValue('');
+    setPopupVisible(false);
     e.stopPropagation();
   };
 
