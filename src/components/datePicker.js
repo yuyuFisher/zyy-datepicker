@@ -45,8 +45,12 @@ export default function DatePicker(props) {
     };
   }, []);
 
+  const handleDatepickerClick = () => {
+    setPopupVisible(true);
+  };
+
   return (
-    <header className="head" ref={rootRef}>
+    <header className="head" ref={rootRef} onClick={handleDatepickerClick}>
       <input
         className="date-input"
         type="text"
