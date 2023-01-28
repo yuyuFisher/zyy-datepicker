@@ -2,7 +2,7 @@ import '../styles/datePicker.css';
 import {
   useEffect, useMemo, useRef,
 } from 'react';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { formatDate } from '../utils/util';
 
@@ -36,7 +36,14 @@ export default function DatePicker(props) {
         disabled
         value={dateString}
       />
-      <span className="iconfont icon-calendar" />
+      <span
+        className={classnames('iconfont', {
+          'calendar-show': dateString,
+        })}
+      >
+        <span className="iconfont icon-calendar" />
+        <span className="iconfont icon-close" />
+      </span>
     </header>
   );
 }

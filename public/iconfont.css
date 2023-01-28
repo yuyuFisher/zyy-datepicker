@@ -5,7 +5,7 @@
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 30px;
+  font-size: 24px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,9 +13,9 @@
   width: 30px;
   height: 100%;
   right: 0;
-  top: 5px;
+  top: 4px;
   text-align: center;
-  color: #bfcbd9;
+  /*color: #bfcbd9;*/
   transition: all .3s;
 }
 
@@ -43,3 +43,15 @@
   content: "\e687";
 }
 
+.calendar-show:hover .icon-close {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.calendar-show:hover .icon-calendar {
+  display: none;
+}
+
+.icon-close {
+  display: none;
+}
