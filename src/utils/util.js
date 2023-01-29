@@ -26,4 +26,22 @@ function getDomParents(doms) {
   return arr;
 }
 
-export { formatDate, uuid, getDomParents };
+const skipYears = (date, years) => {
+  const result = new Date(date);
+  result.setFullYear(result.getFullYear() + years);
+  return result;
+};
+
+const skipMonths = (date, months) => {
+  const result = new Date(date);
+  result.setMonth(result.getMonth() + months);
+  return result;
+};
+
+export {
+  formatDate,
+  uuid,
+  getDomParents,
+  skipYears,
+  skipMonths,
+};
