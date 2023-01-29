@@ -38,6 +38,12 @@ const skipMonths = (date, months) => {
   return result;
 };
 
+const skipDates = (date, days) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
 export {
   formatDate,
   uuid,
