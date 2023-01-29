@@ -1,11 +1,13 @@
-import '../styles/datePicker.css';
 import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { formatDate, getDomParents, uuid } from '../utils/util';
+
 import Popup from './Popup/popup';
+import Panel from './Panel/panel';
+import { formatDate, getDomParents, uuid } from '../utils/util';
+import '../styles/datePicker.css';
 
 export default function DatePicker(props) {
   const {
@@ -60,6 +62,13 @@ export default function DatePicker(props) {
     return pos;
   };
 
+  const onPanelChange = (date) => {
+    setValue(date);
+    setTimeout(() => {
+      setPopupVisible(false);
+    }, 0);
+  };
+
   return (
     <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
       <input
@@ -78,7 +87,13 @@ export default function DatePicker(props) {
         <span className="iconfont icon-calendar" />
         <span className="iconfont icon-close" onClick={handleClear} />
       </span>
-      <Popup visible={popupVisible} getPopupPosition={getPopupPosition} />
+      <Popup visible={popupVisible} getPopupPosition={getPopupPosition}>
+        <Panel
+          id={panelIdRef.current}
+          date={value}
+          onChange={onPanelChange}
+        />
+      </Popup>
     </section>
   );
 }
