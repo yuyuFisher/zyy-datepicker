@@ -4,10 +4,10 @@ import {
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Popup from './Popup/popup';
-import Panel from './Panel/panel';
-import { formatDate, getDomParents, uuid } from '../utils/util';
-import '../styles/datePicker.css';
+import Popup from '../Popup/popup';
+import Panel from '../Panel/panel';
+import { formatDate, getDomParents, uuid } from '../../utils/util';
+import './datePicker.css';
 
 export default function DatePicker(props) {
   const {
@@ -26,7 +26,7 @@ export default function DatePicker(props) {
   }, [value]);
 
   const handleClear = (e) => {
-    setValue('');
+    setValue(null);
     setPopupVisible(false);
     e.stopPropagation();
   };
@@ -90,7 +90,7 @@ export default function DatePicker(props) {
       <Popup visible={popupVisible} getPopupPosition={getPopupPosition}>
         <Panel
           id={panelIdRef.current}
-          date={value}
+          value={value}
           onChange={onPanelChange}
         />
       </Popup>
