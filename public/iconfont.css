@@ -5,7 +5,7 @@
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,16 +15,16 @@
   right: 0;
   top: 4px;
   text-align: center;
-  color: #bfcbd9;
   transition: all .3s;
 }
 
-.icon-arrow-double-left:before {
-  content: "\e665";
-}
-
-.icon-arrow-double-right:before {
-  content: "\e666";
+.icons {
+  font-size: 24px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 72px;
+  height: 24px;
 }
 
 .icon-close:before {
@@ -35,17 +35,43 @@
   content: "\e667";
 }
 
+.icon-arrow-double-left:before {
+  content: "\e665";
+  position: absolute;
+  right: 300px;
+  top: 10px;
+}
+
 .icon-arrow-left-bold:before {
   content: "\e685";
+  position: absolute;
+  right: 275px;
+  top: 10px;
 }
 
 .icon-arrow-right-bold:before {
   content: "\e687";
+  position: absolute;
+  right: 50px;
+  top: 10px;
+}
+
+.icon-arrow-double-right:before {
+  content: "\e666";
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}
+
+.icon-arrow-double-left:hover,
+.icon-arrow-double-right:hover,
+.icon-arrow-left-bold:hover,
+.icon-arrow-right-bold:hover{
+  color: #409eff;
 }
 
 .calendar-show:hover .icon-close {
   display: inline-flex;
-  /*cursor: pointer;*/
 }
 
 .calendar-show:hover .icon-calendar {
