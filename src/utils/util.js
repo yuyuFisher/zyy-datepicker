@@ -81,4 +81,5 @@ export {
   skipYears,
   skipMonths,
   constant,
+  isSameDate,
 };
