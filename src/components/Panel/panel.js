@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import classnames from 'classnames';
 import {
   skipYears,
   skipMonths,
+  isSameDate,
+  constant,
+  createDays,
 } from '../../utils/util';
 import './pannel.css';
 
 const now = new Date();
 
 export default function Panel(props) {
-  const { id, value } = props;
+  const { onChange, id, value } = props;
   const [date, setDate] = useState(value || now);
+  const days = useMemo(() => createDays(date), [date]);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
 
@@ -27,6 +32,11 @@ export default function Panel(props) {
       newDate = skipMonths(date, total);
     }
     setDate(newDate);
+  };
+
+  const handleItemClick = (item) => {
+    const { itemValue } = item;
+    onChange(itemValue);
   };
 
   return (
@@ -71,6 +81,30 @@ export default function Panel(props) {
         <div className="date-panel-th-item">五</div>
         <div className="date-panel-th-item date-panel-th-weekend">六</div>
       </div>
+      <div className="date-panel-body">
+        {days.map((item, index) => {
+          const isWeekend = index % 7 === 0 || (index + 1) % 7 === 0;
+          const isMatch = isSameDate(item.itemValue, value);
+          return (
+            <div
+              key={`key-${item.value}`}
+              onClick={() => handleItemClick(item)}
+              className={classnames('date-panel-body-item', {
+                'date-panel-body-match': isMatch,
+                'date-panel-body-today': item.isToday,
+                'date-panel-body-weekend': isWeekend,
+                'date-panel-body-blur': item.type === constant.TYPE_PRE_MONTH || item.type === constant.TYPE_NEXT_MONTH,
+              })}
+            >
+              <div className="date-panel-body-container">
+                <div className="container-text">
+                  {item.isToday ? '今天' : item.text}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -78,4 +112,5 @@ export default function Panel(props) {
 Panel.propTypes = {
   id: PropTypes.string,
   value: PropTypes.instanceOf(Date),
+  onChange: PropTypes.func,
 };
