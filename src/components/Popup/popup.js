@@ -4,21 +4,21 @@ import ReactDOM from 'react-dom';
 import './popup.css';
 
 export default function Popup(props) {
-  const { visible, root, children } = props;
-  const [pos, setPos] = useState({ left: 0, top: 0 });
-  const { left, top } = pos;
+  const { visible, target, children } = props;
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+  const { left, top } = position;
 
   const getPopupPosition = () => {
-    if (root.current) {
-      const rect = root.current.getBoundingClientRect();
-      pos.left = rect.left;
-      pos.top = rect.top + 40;
+    if (target.current) {
+      const rect = target.current.getBoundingClientRect();
+      position.left = rect.left;
+      position.top = rect.top + 40;
     }
-    return pos;
+    return position;
   };
 
   useEffect(() => {
-    setPos(getPopupPosition());
+    setPosition(getPopupPosition());
   }, []);
 
   return ReactDOM.createPortal(
