@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import { constant } from '../../utils/constants';
 
 export default function PanelItemOfDate(props) {
+  const { onClick, match, item } = props;
   return (
     <div
-      onClick={props.onClick}
+      onClick={onClick}
       className={classnames('date-panel-body-item', {
-        'date-panel-body-match': props.match,
-        'date-panel-body-today': props.item.isToday,
+        'date-panel-body-match': match,
+        'date-panel-body-today': item.isToday,
         'date-panel-body-blur':
-            props.item.type === constant.TYPE_PRE_MONTH
-            || props.item.type === constant.TYPE_NEXT_MONTH,
+            item.type === constant.TYPE_PRE_MONTH
+            || item.type === constant.TYPE_NEXT_MONTH,
       })}
     >
       <div className="date-panel-body-container">
         <div className="container-text">
-          {props.item.isToday ? '今天' : props.item.text}
+          {item.isToday ? '今天' : item.text}
         </div>
       </div>
     </div>
