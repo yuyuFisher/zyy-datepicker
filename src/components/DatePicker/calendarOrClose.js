@@ -5,7 +5,7 @@ export default function CalendarOrClose(props) {
   return (
     <span
       className={classnames('iconfont', {
-        'calendar-show': props.dateString,
+        'calendar-show': props.value,
       })}
     >
       <span className="iconfont icon-calendar" />
@@ -15,6 +15,6 @@ export default function CalendarOrClose(props) {
 }
 
 CalendarOrClose.propTypes = {
-  dateString: PropTypes.string,
+  value: PropTypes.string,
   onClick: PropTypes.func,
 };

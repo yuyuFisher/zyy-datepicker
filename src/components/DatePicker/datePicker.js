@@ -7,11 +7,10 @@ import Popup from '../Popup/popup';
 import Panel from '../Panel/panel';
 import { formatDate, getDomParents, uuid } from '../../utils/util';
 import './datePicker.css';
-import CalendarOrClose from './calendarOrClose';
+import DateInputBox from './dateInputBox';
 
 export default function DatePicker(props) {
   const {
-    placeholder = '选择日期',
     defaultValue = new Date(),
     onChange,
   } = props;
@@ -71,15 +70,7 @@ export default function DatePicker(props) {
 
   return (
     <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-      <input
-        className="date-input"
-        type="text"
-        autoComplete="off"
-        placeholder={placeholder}
-        disabled
-        value={dateString}
-      />
-      <CalendarOrClose dateString={dateString} onClick={handleClear} />
+      <DateInputBox value={dateString} onClick={handleClear} />
       <Popup visible={popupVisible} getPopupPosition={getPopupPosition}>
         <Panel
           id={panelIdRef.current}
@@ -92,7 +83,6 @@ export default function DatePicker(props) {
 }
 
 DatePicker.propTypes = {
-  placeholder: PropTypes.string,
   defaultValue: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
 };
