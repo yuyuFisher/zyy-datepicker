@@ -7,6 +7,7 @@ import { constant } from '../../utils/constants';
 import isSameDate from '../../utils/isSameDate';
 import skipTimes from '../../utils/skipTimes';
 import { formatDateAtPanel } from '../../utils/formatDate';
+import WeekHeader from './weekHeader';
 
 const now = new Date();
 
@@ -55,15 +56,7 @@ export default function Panel(props) {
           />
         </span>
       </div>
-      <div className="date-panel-th">
-        <div className="date-panel-th-item date-panel-th-weekend">日</div>
-        <div className="date-panel-th-item">一</div>
-        <div className="date-panel-th-item">二</div>
-        <div className="date-panel-th-item">三</div>
-        <div className="date-panel-th-item">四</div>
-        <div className="date-panel-th-item">五</div>
-        <div className="date-panel-th-item date-panel-th-weekend">六</div>
-      </div>
+      <WeekHeader />
       <div className="date-panel-body">
         {days.map((item, index) => {
           const isWeekend = index % 7 === 0 || (index + 1) % 7 === 0;
