@@ -43,7 +43,7 @@ export default function Panel(props) {
             onClick={() => jumpTo('month', -1)}
           />
         </span>
-        <div className="date-panel-header-center">{panelString}</div>
+        <span className="date-panel-header-center">{panelString}</span>
         <span className="icons">
           <span
             className="iconfont icon-arrow-right-bold"

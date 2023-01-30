@@ -52,16 +52,6 @@ export default function DatePicker(props) {
     setPopupVisible(true);
   };
 
-  const getPopupPosition = () => {
-    const pos = { left: 0, top: 0 };
-    if (rootRef.current) {
-      const rect = rootRef.current.getBoundingClientRect();
-      pos.left = rect.left;
-      pos.top = rect.top + 40;
-    }
-    return pos;
-  };
-
   const onPanelChange = (date) => {
     setValue(date);
     setTimeout(() => {
@@ -72,7 +62,7 @@ export default function DatePicker(props) {
   return (
     <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
       <DateInputBox value={dateString} onClick={handleClear} />
-      <Popup visible={popupVisible} getPopupPosition={getPopupPosition}>
+      <Popup visible={popupVisible} root={rootRef}>
         <Panel
           id={panelIdRef.current}
           value={value}
