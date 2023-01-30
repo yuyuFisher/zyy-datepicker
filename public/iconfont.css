@@ -20,11 +20,6 @@
 
 .icons {
   font-size: 24px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: 72px;
-  height: 24px;
 }
 
 .icon-close:before {
@@ -38,29 +33,25 @@
 .icon-arrow-double-left:before {
   content: "\e665";
   position: absolute;
-  right: 300px;
-  top: 10px;
+  right: 275px;
 }
 
 .icon-arrow-left-bold:before {
   content: "\e685";
   position: absolute;
-  right: 275px;
-  top: 10px;
+  right: 250px;
 }
 
 .icon-arrow-right-bold:before {
   content: "\e687";
   position: absolute;
   right: 50px;
-  top: 10px;
 }
 
 .icon-arrow-double-right:before {
   content: "\e666";
   position: absolute;
   right: 25px;
-  top: 10px;
 }
 
 .icon-arrow-double-left:hover,
