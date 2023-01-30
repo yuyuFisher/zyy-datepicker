@@ -9,7 +9,6 @@ export default function PanelItemOfDate(props) {
       className={classnames('date-panel-body-item', {
         'date-panel-body-match': props.match,
         'date-panel-body-today': props.item.isToday,
-        'date-panel-body-weekend': props.weekend,
         'date-panel-body-blur':
             props.item.type === constant.TYPE_PRE_MONTH
             || props.item.type === constant.TYPE_NEXT_MONTH,
@@ -27,7 +26,6 @@ export default function PanelItemOfDate(props) {
 PanelItemOfDate.propTypes = {
   onClick: PropTypes.func,
   match: PropTypes.bool,
-  weekend: PropTypes.bool,
   item: PropTypes.shape({
     itemValue: PropTypes.instanceOf(Date),
     text: PropTypes.number,

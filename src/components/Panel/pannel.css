@@ -30,10 +30,6 @@
   justify-content: center;
 }
 
-.date-panel-th-weekend {
-  color: #000;
-}
-
 .date-panel-body {
   width: 100%;
   display: flex;

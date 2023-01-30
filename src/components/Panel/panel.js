@@ -43,8 +43,7 @@ export default function Panel(props) {
       />
       <WeekHeader />
       <footer className="date-panel-body">
-        {days.map((item, index) => {
-          const isWeekend = index % 7 === 0 || (index + 1) % 7 === 0;
+        {days.map((item) => {
           const isMatch = isSameDate(item.itemValue, value);
           return (
             <PanelItemOfDate
@@ -52,7 +51,6 @@ export default function Panel(props) {
               onClick={() => handleItemClick(item)}
               match={isMatch}
               item={item}
-              weekend={isWeekend}
             />
           );
         })}
