@@ -18,10 +18,10 @@ export default function DatePicker(props) {
     onChange,
   } = props;
   const [value, setValue] = useState(defaultValue);
+  const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
   const panelIdRef = useRef(uuid('date'));
   const dateString = useMemo(() => (value ? formatDateAtInput(value) : ''), [value]);
-  const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
     onChange?.(value);
