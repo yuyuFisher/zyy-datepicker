@@ -33,21 +33,20 @@ function getDomParents(doms) {
   return arr;
 }
 
-const skipYears = (date, years) => {
+const skipTimes = (date, type, times) => {
   const result = new Date(date);
-  result.setFullYear(result.getFullYear() + years);
-  return result;
-};
-
-const skipMonths = (date, months) => {
-  const result = new Date(date);
-  result.setMonth(result.getMonth() + months);
-  return result;
-};
-
-const skipDates = (date, days) => {
-  const result = new Date(date);
-  result.setDate(result.getDate() + days);
+  switch (type) {
+    case 'year':
+      result.setFullYear(result.getFullYear() + times);
+      break;
+    case 'month':
+      result.setMonth(result.getMonth() + times);
+      break;
+    case 'date':
+      result.setDate(result.getDate() + times);
+      break;
+    default: break;
+  }
   return result;
 };
 
@@ -77,13 +76,13 @@ const isSameDate = (date1, date2) => {
 function createDays(date) {
   const list = [];
   const [firstDate, lastDate] = getMonthStartAndLastDate(date);
-  const preMonthDate = skipMonths(date, -1);
+  const preMonthDate = skipTimes(date, 'month', -1);
 
   const [, preMonthLastDate] = getMonthStartAndLastDate(preMonthDate);
   const preMonthLastDay = preMonthLastDate.getDay();
 
   for (let i = 1; i <= preMonthLastDay + 1; i += 1) {
-    const thisDate = skipDates(firstDate, -i);
+    const thisDate = skipTimes(firstDate, 'date', -i);
 
     const item = {
       itemValue: thisDate,
@@ -98,7 +97,7 @@ function createDays(date) {
 
   const nowMonthDays = getMonthAllDays(date);
   for (let i = 0; i < nowMonthDays; i += 1) {
-    const thisDate = skipDates(firstDate, +i);
+    const thisDate = skipTimes(firstDate, 'date', +i);
     const item = {
       itemValue: thisDate,
       text: thisDate.getDate(),
@@ -111,7 +110,7 @@ function createDays(date) {
 
   let i = 1;
   while (list.length < TOTAL) {
-    const thisDate = skipDates(lastDate, i += 1);
+    const thisDate = skipTimes(lastDate, 'date', i += 1);
     const item = {
       itemValue: thisDate,
       text: thisDate.getDate(),
@@ -128,8 +127,7 @@ export {
   formatDate,
   uuid,
   getDomParents,
-  skipYears,
-  skipMonths,
+  skipTimes,
   constant,
   isSameDate,
   createDays,

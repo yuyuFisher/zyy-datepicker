@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
 import classnames from 'classnames';
 import {
-  skipYears,
-  skipMonths,
+  skipTimes,
   isSameDate,
   constant,
   createDays,
@@ -24,13 +23,7 @@ export default function Panel(props) {
   }, [value]);
 
   const jumpTo = (type, total) => {
-    let newDate;
-
-    if (type === 'year') {
-      newDate = skipYears(date, total);
-    } else if (type === 'month') {
-      newDate = skipMonths(date, total);
-    }
+    const newDate = skipTimes(date, type, total);
     setDate(newDate);
   };
 
