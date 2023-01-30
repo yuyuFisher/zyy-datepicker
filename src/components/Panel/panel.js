@@ -4,10 +4,10 @@ import classnames from 'classnames';
 import {
   skipTimes,
   isSameDate,
-  constant,
   createDays,
 } from '../../utils/util';
 import './pannel.css';
+import { constant } from '../../utils/constants';
 
 const now = new Date();
 
