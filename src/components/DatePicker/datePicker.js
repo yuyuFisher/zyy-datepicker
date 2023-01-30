@@ -2,12 +2,13 @@ import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import DateInputBox from './dateInputBox';
-import Popup from '../Popup/popup';
-import Panel from '../Panel/panel';
+
 import { formatDateAtInput } from '../../utils/formatDate';
 import getDomParents from '../../utils/getDomParents';
 import uuid from '../../utils/uuid';
+import Popup from '../Popup/popup';
+import Panel from '../Panel/panel';
+import DateInputBox from './dateInputBox';
 
 import './datePicker.css';
 

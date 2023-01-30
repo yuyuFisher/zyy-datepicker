@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
+import { formatDateAtPanel } from '../../utils/formatDate';
 import createDays from '../../utils/createDays';
-import './pannel.css';
 import isSameDate from '../../utils/isSameDate';
 import skipTimes from '../../utils/skipTimes';
-import { formatDateAtPanel } from '../../utils/formatDate';
+import PanelItemOfDate from './panelItemOfDate';
 import WeekHeader from './weekHeader';
 import PanelHeader from './panelHeader';
-import PanelItemOfDate from './panelItemOfDate';
+
+import './pannel.css';
 
 const now = new Date();
 

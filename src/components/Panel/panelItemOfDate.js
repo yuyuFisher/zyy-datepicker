@@ -10,7 +10,9 @@ export default function PanelItemOfDate(props) {
         'date-panel-body-match': props.match,
         'date-panel-body-today': props.item.isToday,
         'date-panel-body-weekend': props.weekend,
-        'date-panel-body-blur': props.item.type === constant.TYPE_PRE_MONTH || props.item.type === constant.TYPE_NEXT_MONTH,
+        'date-panel-body-blur':
+            props.item.type === constant.TYPE_PRE_MONTH
+            || props.item.type === constant.TYPE_NEXT_MONTH,
       })}
     >
       <div className="date-panel-body-container">
