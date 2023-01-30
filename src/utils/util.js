@@ -2,8 +2,6 @@ import { constant, TOTAL } from './constants';
 import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
 import formatDate from './formatDate';
 
-const uuid = (prefix) => prefix + Math.random().toString(16).slice(2);
-
 const skipTimes = (date, type, times) => {
   const result = new Date(date);
   switch (type) {
@@ -81,7 +79,6 @@ function createDays(date) {
 }
 
 export {
-  uuid,
   skipTimes,
   isSameDate,
   createDays,
