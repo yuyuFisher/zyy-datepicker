@@ -1,6 +1,7 @@
 import { constant, TOTAL } from './constants';
 import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
 import formatDate from './formatDate';
+import isSameDate from './isSameDate';
 
 const skipTimes = (date, type, times) => {
   const result = new Date(date);
@@ -17,15 +18,6 @@ const skipTimes = (date, type, times) => {
     default: break;
   }
   return result;
-};
-
-const isSameDate = (date1, date2) => {
-  if (!date1 || !date2) return false;
-  return (
-    date1.getFullYear() === date2.getFullYear()
-      && date1.getMonth() === date2.getMonth()
-      && date1.getDate() === date2.getDate()
-  );
 };
 
 function createDays(date) {
@@ -80,6 +72,5 @@ function createDays(date) {
 
 export {
   skipTimes,
-  isSameDate,
   createDays,
 };

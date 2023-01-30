@@ -2,14 +2,14 @@ import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-
+import DateInputBox from './dateInputBox';
 import Popup from '../Popup/popup';
 import Panel from '../Panel/panel';
-import './datePicker.css';
-import DateInputBox from './dateInputBox';
 import formatDate from '../../utils/formatDate';
 import getDomParents from '../../utils/getDomParents';
 import uuid from '../../utils/uuid';
+
+import './datePicker.css';
 
 export default function DatePicker(props) {
   const {
@@ -42,7 +42,6 @@ export default function DatePicker(props) {
         setPopupVisible(false);
       }
     };
-
     document.addEventListener('mousedown', callback);
     return () => {
       document.removeEventListener('mousedown', callback);

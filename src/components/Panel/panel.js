@@ -3,11 +3,11 @@ import { useEffect, useMemo, useState } from 'react';
 import classnames from 'classnames';
 import {
   skipTimes,
-  isSameDate,
   createDays,
 } from '../../utils/util';
 import './pannel.css';
 import { constant } from '../../utils/constants';
+import isSameDate from '../../utils/isSameDate';
 
 const now = new Date();
 
