@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import DateInputBox from './dateInputBox';
 import Popup from '../Popup/popup';
 import Panel from '../Panel/panel';
-import formatDateAtInput from '../../utils/formatDateAtInput';
+import { formatDateAtInput } from '../../utils/formatDate';
 import getDomParents from '../../utils/getDomParents';
 import uuid from '../../utils/uuid';
 

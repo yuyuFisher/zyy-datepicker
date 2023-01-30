@@ -6,6 +6,7 @@ import './pannel.css';
 import { constant } from '../../utils/constants';
 import isSameDate from '../../utils/isSameDate';
 import skipTimes from '../../utils/skipTimes';
+import { formatDateAtPanel } from '../../utils/formatDate';
 
 const now = new Date();
 
@@ -13,8 +14,7 @@ export default function Panel(props) {
   const { onChange, id, value } = props;
   const [date, setDate] = useState(value || now);
   const days = useMemo(() => createDays(date), [date]);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
+  const panelString = formatDateAtPanel(date);
 
   useEffect(() => {
     setDate(value || now);
@@ -43,15 +43,7 @@ export default function Panel(props) {
             onClick={() => jumpTo('month', -1)}
           />
         </span>
-        <div className="date-panel-header-center">
-          {year}
-          {' '}
-          年
-          {' '}
-          {month}
-          {' '}
-          月
-        </div>
+        <div className="date-panel-header-center">{panelString}</div>
         <span className="icons">
           <span
             className="iconfont icon-arrow-right-bold"
