@@ -2,25 +2,9 @@ import { constant, TOTAL } from './constants';
 import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
 import formatDate from './formatDate';
 import isSameDate from './isSameDate';
+import skipTimes from './skipTimes';
 
-const skipTimes = (date, type, times) => {
-  const result = new Date(date);
-  switch (type) {
-    case 'year':
-      result.setFullYear(result.getFullYear() + times);
-      break;
-    case 'month':
-      result.setMonth(result.getMonth() + times);
-      break;
-    case 'date':
-      result.setDate(result.getDate() + times);
-      break;
-    default: break;
-  }
-  return result;
-};
-
-function createDays(date) {
+export default function createDays(date) {
   const list = [];
   const [firstDate, lastDate] = getMonthStartAndLastDate(date);
   const preMonthDate = skipTimes(date, 'month', -1);
@@ -69,8 +53,3 @@ function createDays(date) {
   }
   return list;
 }
-
-export {
-  skipTimes,
-  createDays,
-};

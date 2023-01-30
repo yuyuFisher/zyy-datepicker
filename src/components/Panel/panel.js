@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
 import classnames from 'classnames';
-import {
-  skipTimes,
-  createDays,
-} from '../../utils/util';
+import createDays from '../../utils/util';
 import './pannel.css';
 import { constant } from '../../utils/constants';
 import isSameDate from '../../utils/isSameDate';
+import skipTimes from '../../utils/skipTimes';
 
 const now = new Date();
 
