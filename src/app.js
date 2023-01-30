@@ -1,5 +1,5 @@
 import DatePicker from './components/DatePicker/datePicker';
-import { formatDate } from './utils/util';
+import formatDate from './utils/formatDate';
 
 export default function App() {
   const now = new Date();

@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 
 import Popup from '../Popup/popup';
 import Panel from '../Panel/panel';
-import { formatDate, getDomParents, uuid } from '../../utils/util';
+import { getDomParents, uuid } from '../../utils/util';
 import './datePicker.css';
 import DateInputBox from './dateInputBox';
+import formatDate from '../../utils/formatDate';
 
 export default function DatePicker(props) {
   const {
