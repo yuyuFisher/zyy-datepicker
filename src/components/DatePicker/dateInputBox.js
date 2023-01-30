@@ -12,12 +12,12 @@ export default function DateInputBox(props) {
         disabled
         value={props.value}
       />
-      <CalendarOrClose value={props.value} onClick={props.onClick} />
+      <CalendarOrClose value={props.value} onClick={props.onClose} />
     </header>
   );
 }
 
 DateInputBox.propTypes = {
   value: PropTypes.string,
-  onClick: PropTypes.func,
+  onClose: PropTypes.func,
 };
