@@ -25,6 +25,7 @@ export default function PanelItemOfDate(props) {
 PanelItemOfDate.propTypes = {
   onClick: PropTypes.func,
   match: PropTypes.bool,
+  weekend: PropTypes.bool,
   item: PropTypes.shape({
     itemValue: PropTypes.instanceOf(Date),
     text: PropTypes.number,
@@ -34,5 +35,4 @@ PanelItemOfDate.propTypes = {
     value: PropTypes.string,
     isToday: PropTypes.bool,
   }),
-  weekend: PropTypes.bool,
 };

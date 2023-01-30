@@ -41,7 +41,7 @@ export default function Panel(props) {
         onClickAddMonth={() => jumpTo('month', 1)}
       />
       <WeekHeader />
-      <div className="date-panel-body">
+      <footer className="date-panel-body">
         {days.map((item, index) => {
           const isWeekend = index % 7 === 0 || (index + 1) % 7 === 0;
           const isMatch = isSameDate(item.itemValue, value);
@@ -55,7 +55,7 @@ export default function Panel(props) {
             />
           );
         })}
-      </div>
+      </footer>
     </div>
   );
 }
