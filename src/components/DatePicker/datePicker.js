@@ -33,9 +33,9 @@ export default function DatePicker(props) {
     e.stopPropagation();
   };
 
-  useEffect(() => {
+  useEffect(() => { // 挪到popup, popup完全独立
     const callback = (e) => {
-      const panelDiv = document.querySelector(`#${panelIdRef.current}`);
+      const panelDiv = document.querySelector(`#${panelIdRef.current}`); // 直接用ref DOM
       const paths = getDomParents(e.target);
       const isClickAway = !paths.includes(rootRef.current) && !paths.includes(panelDiv);
 
@@ -55,15 +55,16 @@ export default function DatePicker(props) {
 
   const onPanelChange = (date) => {
     setValue(date);
-    setTimeout(() => {
+    setTimeout(() => { // 注意一下
       setPopupVisible(false);
     }, 0);
   };
 
   return (
     <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-      <DateInputBox value={dateString} onClick={handleClear} />
-      <Popup visible={popupVisible} root={rootRef}>
+      <DateInputBox value={dateString} onClose={handleClear} />
+      {/* value名字改 */}
+      <Popup visible={popupVisible} target={rootRef}>
         <Panel
           id={panelIdRef.current}
           value={value}
