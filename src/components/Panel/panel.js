@@ -8,6 +8,7 @@ import isSameDate from '../../utils/isSameDate';
 import skipTimes from '../../utils/skipTimes';
 import { formatDateAtPanel } from '../../utils/formatDate';
 import WeekHeader from './weekHeader';
+import ArrowIcons from './arrowIcons';
 
 const now = new Date();
 
@@ -34,27 +35,19 @@ export default function Panel(props) {
   return (
     <div className="date-panel" id={id}>
       <div className="date-panel-header">
-        <span className="icons">
-          <span
-            className="iconfont icon-arrow-double-left"
-            onClick={() => jumpTo('year', -1)}
-          />
-          <span
-            className="iconfont icon-arrow-left-bold"
-            onClick={() => jumpTo('month', -1)}
-          />
-        </span>
+        <ArrowIcons
+          classNameYear="iconfont icon-arrow-double-left"
+          classNameMonth="iconfont icon-arrow-left-bold"
+          onClickYear={() => jumpTo('year', -1)}
+          onClickMonth={() => jumpTo('month', -1)}
+        />
         <span className="date-panel-header-center">{panelString}</span>
-        <span className="icons">
-          <span
-            className="iconfont icon-arrow-right-bold"
-            onClick={() => jumpTo('month', 1)}
-          />
-          <span
-            className="iconfont icon-arrow-double-right"
-            onClick={() => jumpTo('year', 1)}
-          />
-        </span>
+        <ArrowIcons
+          classNameYear="iconfont icon-arrow-double-right"
+          classNameMonth="iconfont icon-arrow-right-bold"
+          onClickYear={() => jumpTo('year', 1)}
+          onClickMonth={() => jumpTo('month', 1)}
+        />
       </div>
       <WeekHeader />
       <div className="date-panel-body">
