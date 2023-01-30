@@ -13,7 +13,7 @@ import './pannel.css';
 const now = new Date();
 
 export default function Panel(props) {
-  const { onChange, id, value } = props;
+  const { onChange, id, value } = props; // 名字有意义
   const [date, setDate] = useState(value || now);
   const days = useMemo(() => createDays(date), [date]);
   const panelString = formatDateAtPanel(date);
