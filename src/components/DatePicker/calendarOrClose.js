@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function CalendarOrClose(props) {
   return (
     <span
-      className={classnames('iconfont', {
+      className={classnames('date-pick-icon', {
         'calendar-show': props.value,
       })}
     >
