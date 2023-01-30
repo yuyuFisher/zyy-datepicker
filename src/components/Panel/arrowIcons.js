@@ -20,5 +20,4 @@ ArrowIcons.propTypes = {
   onClickMonth: PropTypes.func,
   classNameYear: PropTypes.string,
   classNameMonth: PropTypes.string,
-
 };

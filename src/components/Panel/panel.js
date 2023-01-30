@@ -8,7 +8,7 @@ import isSameDate from '../../utils/isSameDate';
 import skipTimes from '../../utils/skipTimes';
 import { formatDateAtPanel } from '../../utils/formatDate';
 import WeekHeader from './weekHeader';
-import ArrowIcons from './arrowIcons';
+import PanelHeader from './panelHeader';
 
 const now = new Date();
 
@@ -34,21 +34,13 @@ export default function Panel(props) {
 
   return (
     <div className="date-panel" id={id}>
-      <div className="date-panel-header">
-        <ArrowIcons
-          classNameYear="iconfont icon-arrow-double-left"
-          classNameMonth="iconfont icon-arrow-left-bold"
-          onClickYear={() => jumpTo('year', -1)}
-          onClickMonth={() => jumpTo('month', -1)}
-        />
-        <span className="date-panel-header-center">{panelString}</span>
-        <ArrowIcons
-          classNameYear="iconfont icon-arrow-double-right"
-          classNameMonth="iconfont icon-arrow-right-bold"
-          onClickYear={() => jumpTo('year', 1)}
-          onClickMonth={() => jumpTo('month', 1)}
-        />
-      </div>
+      <PanelHeader
+        onClickPreYear={() => jumpTo('year', -1)}
+        onClickPreMonth={() => jumpTo('month', -1)}
+        panelString={panelString}
+        onClickAddYear={() => jumpTo('year', 1)}
+        onClickAddMonth={() => jumpTo('month', 1)}
+      />
       <WeekHeader />
       <div className="date-panel-body">
         {days.map((item, index) => {
