@@ -2,7 +2,7 @@ function padding(num, length) {
   return (Array(length).join('0') + num).slice(-length);
 }
 
-export default function formatDate(date) {
+export default function formatDateAtInput(date) {
   if (!date) {
     return '';
   }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import DateInputBox from './dateInputBox';
 import Popup from '../Popup/popup';
 import Panel from '../Panel/panel';
-import formatDate from '../../utils/formatDate';
+import formatDateAtInput from '../../utils/formatDateAtInput';
 import getDomParents from '../../utils/getDomParents';
 import uuid from '../../utils/uuid';
 
@@ -19,7 +19,7 @@ export default function DatePicker(props) {
   const [value, setValue] = useState(defaultValue);
   const rootRef = useRef(null);
   const panelIdRef = useRef(uuid('date'));
-  const dateString = useMemo(() => (value ? formatDate(value) : ''), [value]);
+  const dateString = useMemo(() => (value ? formatDateAtInput(value) : ''), [value]);
   const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
