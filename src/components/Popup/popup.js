@@ -22,12 +22,12 @@ export default function Popup(props) {
   }, []);
 
   return ReactDOM.createPortal(
-    <div
+    <section
       className="date-popup"
       style={{ left, top, display: visible ? 'block' : 'none' }}
     >
       {children}
-    </div>,
+    </section>,
     document.body,
   );
 }

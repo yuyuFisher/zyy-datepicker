@@ -32,7 +32,7 @@ export default function Panel(props) {
   };
 
   return (
-    <div className="date-panel" id={id}>
+    <section className="date-panel" id={id}>
       <PanelHeader
         onClickPreYear={() => jumpTo('year', -1)}
         onClickPreMonth={() => jumpTo('month', -1)}
@@ -56,7 +56,7 @@ export default function Panel(props) {
           );
         })}
       </footer>
-    </div>
+    </section>
   );
 }
 

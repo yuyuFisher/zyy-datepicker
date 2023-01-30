@@ -3,7 +3,7 @@ import ArrowIcons from './arrowIcons';
 
 export default function PanelHeader(props) {
   return (
-    <div className="date-panel-header">
+    <header className="date-panel-header">
       <ArrowIcons
         classNameYear="iconfont icon-arrow-double-left"
         classNameMonth="iconfont icon-arrow-left-bold"
@@ -17,7 +17,7 @@ export default function PanelHeader(props) {
         onClickYear={props.onClickAddYear}
         onClickMonth={props.onClickAddMonth}
       />
-    </div>
+    </header>
   );
 }
 
