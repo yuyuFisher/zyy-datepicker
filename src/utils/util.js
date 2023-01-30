@@ -1,4 +1,5 @@
 import { constant, TOTAL } from './constants';
+import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
 
 function padding(num, length) {
   return (Array(length).join('0') + num).slice(-length);
@@ -44,20 +45,6 @@ const skipTimes = (date, type, times) => {
   }
   return result;
 };
-
-function getMonthAllDays(date) {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  return new Date(year, month, 0).getDate();
-}
-
-function getMonthStartAndLastDate(date) {
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const firstDate = new Date(year, month, 1);
-  const lastDate = new Date(year, month, getMonthAllDays(date));
-  return [firstDate, lastDate];
-}
 
 const isSameDate = (date1, date2) => {
   if (!date1 || !date2) return false;
