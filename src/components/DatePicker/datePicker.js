@@ -1,13 +1,13 @@
 import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import Popup from '../Popup/popup';
 import Panel from '../Panel/panel';
 import { formatDate, getDomParents, uuid } from '../../utils/util';
 import './datePicker.css';
-import IconPickOrClose from './iconPickOrClose';
 
 export default function DatePicker(props) {
   const {
@@ -79,7 +79,14 @@ export default function DatePicker(props) {
         disabled
         value={dateString}
       />
-      <IconPickOrClose dateString={dateString} onClick={handleClear} />
+      <span
+        className={classnames('iconfont', {
+          'calendar-show': dateString,
+        })}
+      >
+        <span className="iconfont icon-calendar" />
+        <span className="iconfont icon-close" onClick={handleClear} />
+      </span>
       <Popup visible={popupVisible} getPopupPosition={getPopupPosition}>
         <Panel
           id={panelIdRef.current}
