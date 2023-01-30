@@ -9,17 +9,6 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  position: absolute;
-  width: 30px;
-  height: 100%;
-  right: 0;
-  top: 4px;
-  text-align: center;
-  transition: all .3s;
-}
-
-.icons {
-  font-size: 24px;
 }
 
 .icon-close:before {
@@ -34,24 +23,28 @@
   content: "\e665";
   position: absolute;
   right: 275px;
+  bottom: 5px;
 }
 
 .icon-arrow-left-bold:before {
   content: "\e685";
   position: absolute;
   right: 250px;
+  bottom: 5px;
 }
 
 .icon-arrow-right-bold:before {
   content: "\e687";
   position: absolute;
   right: 50px;
+  bottom: 5px;
 }
 
 .icon-arrow-double-right:before {
   content: "\e666";
   position: absolute;
   right: 25px;
+  bottom: 5px;
 }
 
 .icon-arrow-double-left:hover,

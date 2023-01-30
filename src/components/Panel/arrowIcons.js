@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export default function ArrowIcons(props) {
   return (
-    <span className="icons">
+    <aside>
       <span
         className={props.classNameYear}
         onClick={props.onClickYear}
@@ -11,7 +11,7 @@ export default function ArrowIcons(props) {
         className={props.classNameMonth}
         onClick={props.onClickMonth}
       />
-    </span>
+    </aside>
   );
 }
 
