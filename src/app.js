@@ -1,12 +1,12 @@
 import DatePicker from './components/DatePicker';
-import { formatDateAtInput } from './utils/formatDate';
+import formatDate from './components/utils/formatDate';
 
 export default function App() {
   const now = new Date();
   return (
     <DatePicker
       defaultValue={now}
-      onChange={(date) => formatDateAtInput(date) ?? '-'}
+      onChange={(date) => formatDate(date) ?? '-'}
     />
   );
 }

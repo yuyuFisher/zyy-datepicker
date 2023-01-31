@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import getDomParents from '../../utils/getDomParents';
-import uuid from '../../utils/uuid';
+import getDomParents from './utils/getDomParents';
+import uuid from './utils/uuid';
 
 import './popup.css';
 

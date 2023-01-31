@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
-import { formatDateAtPanel } from '../../utils/formatDate';
-import createDays from '../../utils/createDays';
-import isSameDate from '../../utils/isSameDate';
-import skipTimes from '../../utils/skipTimes';
+import createDays from './utils/createDays';
+import isSameDate from './utils/isSameDate';
+import skipTimes from './utils/skipTimes';
 import PanelItemOfDate from './panelItemOfDate';
 import WeekHeader from './weekHeader';
 import PanelHeader from './panelHeader';
@@ -16,7 +15,7 @@ export default function Panel(props) {
   const { onChange, id, value } = props; // 名字有意义
   const [date, setDate] = useState(value || now);
   const days = useMemo(() => createDays(date), [date]);
-  const panelString = formatDateAtPanel(date);
+  const panelString = `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
 
   useEffect(() => {
     setDate(value || now);

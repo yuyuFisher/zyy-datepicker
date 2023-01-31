@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { constant } from '../../utils/constants';
+import { constant } from './utils/constants';
 
 export default function PanelItemOfDate(props) {
   const { onClick, match, item } = props;

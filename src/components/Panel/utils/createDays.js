@@ -1,8 +1,8 @@
 import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
-import { formatDateAtInput } from './formatDate';
 import { constant, TOTAL } from './constants';
 import isSameDate from './isSameDate';
 import skipTimes from './skipTimes';
+import formatDate from '../../utils/formatDate';
 
 export default function createDays(date) {
   const list = [];
@@ -19,7 +19,7 @@ export default function createDays(date) {
       itemValue: thisDate,
       text: thisDate.getDate(),
       type: constant.TYPE_PRE_MONTH,
-      value: formatDateAtInput(thisDate),
+      value: formatDate(thisDate),
       isToday: false,
     };
     list.push(item);
@@ -33,7 +33,7 @@ export default function createDays(date) {
       itemValue: thisDate,
       text: thisDate.getDate(),
       type: constant.TYPE_NOW_MONTH,
-      value: formatDateAtInput(thisDate),
+      value: formatDate(thisDate),
       isToday: isSameDate(thisDate, new Date()),
     };
     list.push(item);
@@ -46,7 +46,7 @@ export default function createDays(date) {
       itemValue: thisDate,
       text: thisDate.getDate(),
       type: constant.TYPE_NEXT_MONTH,
-      value: formatDateAtInput(thisDate),
+      value: formatDate(thisDate),
       isToday: false,
     };
     list.push(item);

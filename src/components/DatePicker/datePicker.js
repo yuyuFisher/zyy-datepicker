@@ -2,13 +2,11 @@ import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-
-import { formatDateAtInput } from '../../utils/formatDate';
 import DateInputBox from './dateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
-
 import './datePicker.css';
+import formatDate from '../utils/formatDate';
 
 export default function DatePicker(props) {
   const {
@@ -19,7 +17,7 @@ export default function DatePicker(props) {
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
   const dateString = useMemo(
-    () => (value ? formatDateAtInput(value) : ''),
+    () => (value ? formatDate(value) : ''),
     [value],
   );
 
@@ -39,7 +37,7 @@ export default function DatePicker(props) {
 
   const onPanelChange = (date) => {
     setValue(date);
-    setTimeout(() => { // 注意一下
+    setTimeout(() => { // 选完弹框立刻消失
       setPopupVisible(false);
     }, 0);
   };
