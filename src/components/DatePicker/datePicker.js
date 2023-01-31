@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { formatDateAtInput } from '../../utils/formatDate';
 import getDomParents from '../../utils/getDomParents';
 import uuid from '../../utils/uuid';
-import Popup from '../Popup/popup';
-import Panel from '../Panel/panel';
+import Popup from '../Popup';
+import Panel from '../Panel';
 import DateInputBox from './dateInputBox';
 
 import './datePicker.css';

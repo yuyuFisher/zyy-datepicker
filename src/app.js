@@ -1,4 +1,4 @@
-import DatePicker from './components/DatePicker/datePicker';
+import DatePicker from './components/DatePicker';
 import { formatDateAtInput } from './utils/formatDate';
 
 export default function App() {

@@ -3,6 +3,7 @@
     position: relative;
     font-size: 14px;
     user-select: none;
+    margin: auto;
 }
 
 .date-input {
