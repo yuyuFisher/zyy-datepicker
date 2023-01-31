@@ -6,7 +6,6 @@ import skipTimes from './utils/skipTimes';
 import PanelItemOfDate from './panelItemOfDate';
 import WeekHeader from './weekHeader';
 import PanelHeader from './panelHeader';
-
 import './pannel.css';
 
 const now = new Date();
@@ -43,7 +42,8 @@ export default function Panel(props) {
       <WeekHeader />
       <footer className="date-panel-body">
         {days.map((item) => {
-          const isMatch = isSameDate(item.itemValue, value);
+          const isMatch = isSameDate(item.itemValue, value) && (item.text !== null);
+          // const isMatch = isSameDate(item.itemValue, value);
           return (
             <PanelItemOfDate
               key={`key-${item.value}`}

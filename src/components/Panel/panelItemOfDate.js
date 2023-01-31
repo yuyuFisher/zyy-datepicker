@@ -30,9 +30,11 @@ PanelItemOfDate.propTypes = {
   item: PropTypes.shape({
     itemValue: PropTypes.instanceOf(Date),
     text: PropTypes.number,
-    type: PropTypes.oneOf(
-      [constant.TYPE_PRE_MONTH, constant.TYPE_NOW_MONTH, constant.TYPE_NEXT_MONTH],
-    ),
+    type: PropTypes.oneOf([
+      constant.TYPE_PRE_MONTH,
+      constant.TYPE_NOW_MONTH,
+      constant.TYPE_NEXT_MONTH,
+    ]),
     value: PropTypes.string,
     isToday: PropTypes.bool,
   }),
