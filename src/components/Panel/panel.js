@@ -43,7 +43,6 @@ export default function Panel(props) {
       <footer className="date-panel-body">
         {days.map((item) => {
           const isMatch = isSameDate(item.itemValue, value) && (item.text !== null);
-          // const isMatch = isSameDate(item.itemValue, value);
           return (
             <PanelItemOfDate
               key={`key-${item.value}`}
