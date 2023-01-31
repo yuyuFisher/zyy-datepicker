@@ -9,6 +9,7 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
 }
 
 .icon-close:before {
@@ -52,10 +53,12 @@
 .icon-arrow-left-bold:hover,
 .icon-arrow-right-bold:hover{
   color: #409eff;
+  cursor: pointer;
 }
 
 .calendar-show:hover .icon-close {
   display: inline-flex;
+  cursor: pointer;
 }
 
 .calendar-show:hover .icon-calendar {
