@@ -24,7 +24,7 @@ export default function Popup(props) {
 
   useEffect(() => {
     const callback = (e) => {
-      const popupDiv = document.querySelector(`#${popupRef.current}`); // 直接用ref DOM
+      const popupDiv = document.querySelector(`#${popupRef.current}`);
       const paths = getDomParents(e.target);
       const isClickAway = !paths.includes(popupDiv);
 

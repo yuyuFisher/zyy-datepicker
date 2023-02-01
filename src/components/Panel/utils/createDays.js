@@ -19,7 +19,7 @@ export default function createDays(date) {
         itemValue: thisDate,
         text: null,
         type: constant.TYPE_PRE_MONTH,
-        value: formatDate(thisDate),
+        dateValue: formatDate(thisDate),
         isToday: false,
       };
       list.push(item);
@@ -34,23 +34,11 @@ export default function createDays(date) {
       itemValue: thisDate,
       text: thisDate.getDate(),
       type: constant.TYPE_NOW_MONTH,
-      value: formatDate(thisDate),
+      dateValue: formatDate(thisDate),
       isToday: isSameDate(thisDate, new Date()),
     };
     list.push(item);
   }
 
-  /* let i = 1;
-  while (list.length < TOTAL) {
-    const thisDate = skipTimes(lastDate, 'date', i += 1);
-    const item = {
-      itemValue: thisDate,
-      text: thisDate.getDate(),
-      type: constant.TYPE_NEXT_MONTH,
-      value: formatDate(thisDate),
-      isToday: false,
-    };
-    list.push(item);
-  } */
   return list;
 }

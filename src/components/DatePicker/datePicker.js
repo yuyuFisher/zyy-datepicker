@@ -13,20 +13,20 @@ export default function DatePicker(props) {
     defaultValue = new Date(),
     onChange,
   } = props;
-  const [value, setValue] = useState(defaultValue);
+  const [dateValue, setDateValue] = useState(defaultValue);
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
   const dateString = useMemo(
-    () => (value ? formatDate(value) : ''),
-    [value],
+    () => (dateValue ? formatDate(dateValue) : ''),
+    [dateValue],
   );
 
   useEffect(() => {
-    onChange?.(value);
-  }, [value]);
+    onChange?.(dateValue);
+  }, [dateValue]);
 
   const handleClear = (e) => {
-    setValue(null);
+    setDateValue(null);
     setPopupVisible(false);
     e.stopPropagation();
   };
@@ -36,7 +36,7 @@ export default function DatePicker(props) {
   };
 
   const onPanelChange = (date) => {
-    setValue(date);
+    setDateValue(date);
     setTimeout(() => { // 选完弹框立刻消失
       setPopupVisible(false);
     }, 0);
@@ -44,14 +44,13 @@ export default function DatePicker(props) {
 
   return (
     <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-      <DateInputBox value={dateString} onClose={handleClear} />
-      {/* value名字改 */}
+      <DateInputBox dateValue={dateString} onClose={handleClear} />
       <Popup
         visible={popupVisible}
         target={rootRef}
         onVisible={(visible) => setPopupVisible(visible)}
       >
-        <Panel value={value} onChange={onPanelChange} />
+        <Panel dateValue={dateValue} onChange={onPanelChange} />
       </Popup>
     </section>
   );

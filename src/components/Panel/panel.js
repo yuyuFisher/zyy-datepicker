@@ -11,14 +11,14 @@ import './pannel.css';
 const now = new Date();
 
 export default function Panel(props) {
-  const { onChange, id, value } = props; // 名字有意义
-  const [date, setDate] = useState(value || now);
+  const { onChange, id, dateValue } = props;
+  const [date, setDate] = useState(dateValue || now);
   const days = useMemo(() => createDays(date), [date]);
   const panelString = `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
 
   useEffect(() => {
-    setDate(value || now);
-  }, [value]);
+    setDate(dateValue || now);
+  }, [dateValue]);
 
   const jumpTo = (type, total) => {
     const newDate = skipTimes(date, type, total);
@@ -42,10 +42,10 @@ export default function Panel(props) {
       <WeekHeader />
       <footer className="date-panel-body">
         {days.map((item) => {
-          const isMatch = isSameDate(item.itemValue, value) && (item.text !== null);
+          const isMatch = isSameDate(item.itemValue, dateValue) && (item.text !== null);
           return (
             <PanelItemOfDate
-              key={`key-${item.value}`}
+              key={`key-${item.dateValue}`}
               onClick={() => handleItemClick(item)}
               match={isMatch}
               item={item}
@@ -59,6 +59,6 @@ export default function Panel(props) {
 
 Panel.propTypes = {
   id: PropTypes.string,
-  value: PropTypes.instanceOf(Date),
+  dateValue: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
 };

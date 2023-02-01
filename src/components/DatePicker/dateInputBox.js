@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import CalendarOrClose from './calendarOrClose';
 
 export default function DateInputBox(props) {
+  const { dateValue, onClose } = props;
   return (
     <header>
       <input
@@ -10,14 +11,14 @@ export default function DateInputBox(props) {
         autoComplete="off"
         placeholder="选择日期"
         disabled
-        value={props.value}
+        value={dateValue}
       />
-      <CalendarOrClose value={props.value} onClick={props.onClose} />
+      <CalendarOrClose dateValue={dateValue} onClose={onClose} />
     </header>
   );
 }
 
 DateInputBox.propTypes = {
-  value: PropTypes.string,
+  dateValue: PropTypes.string,
   onClose: PropTypes.func,
 };

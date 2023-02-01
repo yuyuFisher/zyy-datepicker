@@ -35,7 +35,7 @@ PanelItemOfDate.propTypes = {
       constant.TYPE_NOW_MONTH,
       constant.TYPE_NEXT_MONTH,
     ]),
-    value: PropTypes.string,
+    dateValue: PropTypes.string,
     isToday: PropTypes.bool,
   }),
 };
