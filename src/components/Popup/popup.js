@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
 import getDomParents from './utils/getDomParents';
-import uuid from './utils/uuid';
 import './popup.css';
 
 export default function Popup(props) {
@@ -11,7 +11,7 @@ export default function Popup(props) {
   } = props;
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const { left, top } = position;
-  const popupRef = useRef(uuid('popup'));
+  const nodeRef = useRef(null);
 
   const getPopupPosition = () => {
     if (target.current) {
@@ -25,7 +25,7 @@ export default function Popup(props) {
   useEffect(() => {
     const callback = (e) => {
       const paths = getDomParents(e.target);
-      const isClickAway = !paths.includes(popupRef.current);
+      const isClickAway = !paths.includes(nodeRef.current);
 
       if (isClickAway) {
         onVisible(false);
@@ -42,13 +42,20 @@ export default function Popup(props) {
   }, []);
 
   return ReactDOM.createPortal(
-    <section
-      ref={popupRef}
-      className="date-popup"
-      style={{ left, top, display: visible ? 'block' : 'none' }}
+    <CSSTransition
+      in={visible}
+      timeout={200}
+      classNames="popup" // 动画名
+      nodeRef={nodeRef}
     >
-      {children}
-    </section>,
+      <section
+        ref={nodeRef}
+        className="date-popup"
+        style={{ left, top }}
+      >
+        {children}
+      </section>
+    </CSSTransition>,
     document.body,
   );
 }
