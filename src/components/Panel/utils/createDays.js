@@ -1,30 +1,31 @@
 import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
-import { constant, TOTAL } from './constants';
+import { constant } from './constants';
 import isSameDate from './isSameDate';
 import skipTimes from './skipTimes';
 import formatDate from '../../utils/formatDate';
 
 export default function createDays(date) {
   const list = [];
-  const [firstDate, lastDate] = getMonthStartAndLastDate(date);
+  const [firstDate] = getMonthStartAndLastDate(date);
   const preMonthDate = skipTimes(date, 'month', -1);
 
   const [, preMonthLastDate] = getMonthStartAndLastDate(preMonthDate);
   const preMonthLastDay = preMonthLastDate.getDay();
 
-  for (let i = 1; i <= preMonthLastDay + 1; i += 1) {
-    const thisDate = skipTimes(firstDate, 'date', -i);
-
-    const item = {
-      itemValue: thisDate,
-      text: thisDate.getDate(),
-      type: constant.TYPE_PRE_MONTH,
-      value: formatDate(thisDate),
-      isToday: false,
-    };
-    list.push(item);
+  if (preMonthLastDay !== 6) {
+    for (let i = 1; i <= preMonthLastDay + 1; i += 1) {
+      const thisDate = skipTimes(firstDate, 'date', -i);
+      const item = {
+        itemValue: thisDate,
+        text: null,
+        type: constant.TYPE_PRE_MONTH,
+        dateValue: formatDate(thisDate),
+        isToday: false,
+      };
+      list.push(item);
+    }
+    list.reverse();
   }
-  list.reverse();
 
   const nowMonthDays = getMonthAllDays(date);
   for (let i = 0; i < nowMonthDays; i += 1) {
@@ -33,23 +34,11 @@ export default function createDays(date) {
       itemValue: thisDate,
       text: thisDate.getDate(),
       type: constant.TYPE_NOW_MONTH,
-      value: formatDate(thisDate),
+      dateValue: formatDate(thisDate),
       isToday: isSameDate(thisDate, new Date()),
     };
     list.push(item);
   }
 
-  let i = 1;
-  while (list.length < TOTAL) {
-    const thisDate = skipTimes(lastDate, 'date', i += 1);
-    const item = {
-      itemValue: thisDate,
-      text: thisDate.getDate(),
-      type: constant.TYPE_NEXT_MONTH,
-      value: formatDate(thisDate),
-      isToday: false,
-    };
-    list.push(item);
-  }
   return list;
 }

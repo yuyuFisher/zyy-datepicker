@@ -2,19 +2,23 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 export default function CalendarOrClose(props) {
+  const {
+    dateValue = new Date(),
+    onClose,
+  } = props;
   return (
     <span
       className={classnames('date-pick-icon', {
-        'calendar-show': props.value,
+        'calendar-show': dateValue,
       })}
     >
       <span className="iconfont icon-calendar" />
-      <span className="iconfont icon-close" onClick={props.onClick} />
+      <span className="iconfont icon-close" onClick={onClose} />
     </span>
   );
 }
 
 CalendarOrClose.propTypes = {
-  value: PropTypes.string,
-  onClick: PropTypes.func,
+  dateValue: PropTypes.string,
+  onClose: PropTypes.func,
 };

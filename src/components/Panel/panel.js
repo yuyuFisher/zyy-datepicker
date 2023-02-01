@@ -6,20 +6,19 @@ import skipTimes from './utils/skipTimes';
 import PanelItemOfDate from './panelItemOfDate';
 import WeekHeader from './weekHeader';
 import PanelHeader from './panelHeader';
-
 import './pannel.css';
 
 const now = new Date();
 
 export default function Panel(props) {
-  const { onChange, id, value } = props; // 名字有意义
-  const [date, setDate] = useState(value || now);
+  const { onChange, dateValue } = props;
+  const [date, setDate] = useState(dateValue || now);
   const days = useMemo(() => createDays(date), [date]);
   const panelString = `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
 
   useEffect(() => {
-    setDate(value || now);
-  }, [value]);
+    setDate(dateValue || now);
+  }, [dateValue]);
 
   const jumpTo = (type, total) => {
     const newDate = skipTimes(date, type, total);
@@ -32,7 +31,7 @@ export default function Panel(props) {
   };
 
   return (
-    <section className="date-panel" id={id}>
+    <section className="date-panel">
       <PanelHeader
         onClickPreYear={() => jumpTo('year', -1)}
         onClickPreMonth={() => jumpTo('month', -1)}
@@ -43,13 +42,19 @@ export default function Panel(props) {
       <WeekHeader />
       <footer className="date-panel-body">
         {days.map((item) => {
-          const isMatch = isSameDate(item.itemValue, value);
+          const isMatch = isSameDate(item.itemValue, dateValue) && (item.text !== null);
           return (
             <PanelItemOfDate
-              key={`key-${item.value}`}
+              key={`key-${item.dateValue}`}
               onClick={() => handleItemClick(item)}
               match={isMatch}
-              item={item}
+              item={{
+                itemValue: item.itemValue,
+                text: item.text,
+                type: item.type,
+                dateValue: item.dateValue,
+                isToday: item.isToday,
+              }}
             />
           );
         })}
@@ -59,7 +64,6 @@ export default function Panel(props) {
 }
 
 Panel.propTypes = {
-  id: PropTypes.string,
-  value: PropTypes.instanceOf(Date),
+  dateValue: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
 };
