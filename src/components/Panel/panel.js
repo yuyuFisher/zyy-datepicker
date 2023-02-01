@@ -11,7 +11,7 @@ import './pannel.css';
 const now = new Date();
 
 export default function Panel(props) {
-  const { onChange, id, dateValue } = props;
+  const { onChange, dateValue } = props;
   const [date, setDate] = useState(dateValue || now);
   const days = useMemo(() => createDays(date), [date]);
   const panelString = `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
@@ -31,7 +31,7 @@ export default function Panel(props) {
   };
 
   return (
-    <section className="date-panel" id={id}>
+    <section className="date-panel">
       <PanelHeader
         onClickPreYear={() => jumpTo('year', -1)}
         onClickPreMonth={() => jumpTo('month', -1)}
@@ -64,7 +64,6 @@ export default function Panel(props) {
 }
 
 Panel.propTypes = {
-  id: PropTypes.string,
   dateValue: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
 };
