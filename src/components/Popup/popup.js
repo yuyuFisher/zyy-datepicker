@@ -24,9 +24,8 @@ export default function Popup(props) {
 
   useEffect(() => {
     const callback = (e) => {
-      const popupDiv = document.querySelector(`#${popupRef.current}`);
       const paths = getDomParents(e.target);
-      const isClickAway = !paths.includes(popupDiv);
+      const isClickAway = !paths.includes(popupRef.current);
 
       if (isClickAway) {
         onVisible(false);
@@ -44,7 +43,7 @@ export default function Popup(props) {
 
   return ReactDOM.createPortal(
     <section
-      id={popupRef.current}
+      ref={popupRef}
       className="date-popup"
       style={{ left, top, display: visible ? 'block' : 'none' }}
     >
