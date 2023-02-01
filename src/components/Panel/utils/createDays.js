@@ -14,17 +14,8 @@ export default function createDays(date) {
 
   if (preMonthLastDay !== 6) {
     for (let i = 1; i <= preMonthLastDay + 1; i += 1) {
-      const thisDate = skipTimes(firstDate, 'date', -i);
-      const item = {
-        itemValue: thisDate,
-        text: null,
-        type: constant.TYPE_PRE_MONTH,
-        dateValue: formatDate(thisDate),
-        isToday: false,
-      };
-      list.push(item);
+      list.push(i);
     }
-    list.reverse();
   }
 
   const nowMonthDays = getMonthAllDays(date);

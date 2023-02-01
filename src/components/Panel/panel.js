@@ -9,6 +9,7 @@ import PanelHeader from './panelHeader';
 import './pannel.css';
 
 const now = new Date();
+let i = 0;
 
 export default function Panel(props) {
   const { onChange, dateValue } = props;
@@ -43,9 +44,10 @@ export default function Panel(props) {
       <footer className="date-panel-body">
         {days.map((item) => {
           const isMatch = isSameDate(item.itemValue, dateValue) && (item.text !== null);
+          i += 1;
           return (
             <PanelItemOfDate
-              key={`key-${item.dateValue}`}
+              key={i}
               onClick={() => handleItemClick(item)}
               match={isMatch}
               item={{
