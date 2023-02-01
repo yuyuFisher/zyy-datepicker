@@ -48,7 +48,13 @@ export default function Panel(props) {
               key={`key-${item.dateValue}`}
               onClick={() => handleItemClick(item)}
               match={isMatch}
-              item={item}
+              item={{
+                itemValue: item.itemValue,
+                text: item.text,
+                type: item.type,
+                dateValue: item.dateValue,
+                isToday: item.isToday,
+              }}
             />
           );
         })}
