@@ -1,5 +1,5 @@
 import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
-import { constant } from './constants';
+import constant from './constants';
 import isSameDate from './isSameDate';
 import skipTimes from './skipTimes';
 import formatDate from '../../utils/formatDate';
