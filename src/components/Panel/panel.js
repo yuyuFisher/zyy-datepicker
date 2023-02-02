@@ -44,7 +44,7 @@ export default function Panel(props) {
       <footer className="date-panel-body">
         {days.map((item) => {
           const isMatch = isSameDate(item.itemValue, dateValue) && (item.text !== null);
-          i += 1;
+          i += 1; // 就用index足够了
           return (
             <PanelItemOfDate
               key={i}

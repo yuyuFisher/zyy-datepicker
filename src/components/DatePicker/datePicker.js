@@ -10,6 +10,9 @@ import formatDate from '../utils/formatDate';
 
 export default function DatePicker(props) {
   const {
+     // 在没有 timezone 设置的情况下，使用 `Date` 作为 DatePicker 的存储类型是比较危险的。
+     // defaultValue可能来自别的系统，而onChange里的timezone又用的是当前系统里。最终可能导致编辑日期时，看到默认选中的日期和上次保存的不一致，或者修改后，明明选的是同一日，却得到不同的date对象。
+     // 如果不牵扯time计算的话，使用year month day 会简化一些。
     defaultValue = new Date(),
     onChange,
   } = props;
@@ -37,6 +40,7 @@ export default function DatePicker(props) {
 
   const onPanelChange = (date) => {
     setDateValue(date);
+    // 不能去掉 setTimeout?
     setTimeout(() => { // 选完弹框立刻消失
       setPopupVisible(false);
     }, 0);
