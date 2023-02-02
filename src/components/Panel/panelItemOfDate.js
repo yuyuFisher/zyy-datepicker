@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import constant from './utils/constants';
+import monthCodeMap from './utils/constants';
 
 export default function PanelItemOfDate(props) {
   const { onClick, match, item } = props;
@@ -11,8 +11,8 @@ export default function PanelItemOfDate(props) {
         'date-panel-body-match': match,
         'date-panel-body-today': item.isToday,
         'date-panel-body-blur':
-            item.type === constant.TYPE_PRE_MONTH
-            || item.type === constant.TYPE_NEXT_MONTH,
+            item.type === monthCodeMap.TYPE_PREVIOUS_MONTH
+            || item.type === monthCodeMap.TYPE_NEXT_MONTH,
       })}
     >
       <div className="date-panel-body-container">
@@ -31,9 +31,9 @@ PanelItemOfDate.propTypes = {
     itemValue: PropTypes.instanceOf(Date),
     text: PropTypes.number,
     type: PropTypes.oneOf([
-      constant.TYPE_PRE_MONTH,
-      constant.TYPE_NOW_MONTH,
-      constant.TYPE_NEXT_MONTH,
+      monthCodeMap.TYPE_PREVIOUS_MONTH,
+      monthCodeMap.TYPE_CURRENT_MONTH,
+      monthCodeMap.TYPE_NEXT_MONTH,
     ]),
     dateValue: PropTypes.string,
     isToday: PropTypes.bool,
