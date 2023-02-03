@@ -9,11 +9,10 @@ import Panel from '../Panel';
 import './datePicker.css';
 
 export default function DatePicker(props) {
-  const {
-    defaultValue = new Date(),
-    onChange,
-  } = props;
-  const [dateValue, setDateValue] = useState(defaultValue);
+  const { defaultValue, onChange } = props;
+  const [dateValue, setDateValue] = useState(
+    new Date(defaultValue.year, defaultValue.month, defaultValue.date),
+  );
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
   const dateString = useMemo(
@@ -57,6 +56,10 @@ export default function DatePicker(props) {
 }
 
 DatePicker.propTypes = {
-  defaultValue: PropTypes.instanceOf(Date),
+  defaultValue: PropTypes.shape({
+    year: PropTypes.number,
+    month: PropTypes.number,
+    date: PropTypes.number,
+  }),
   onChange: PropTypes.func,
 };
