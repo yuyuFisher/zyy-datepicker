@@ -48,7 +48,7 @@ export default function DatePicker(props) {
       <Popup
         visible={popupVisible}
         target={rootRef}
-        onVisible={(visible) => setPopupVisible(visible)}
+        onVisibilityChange={(visible) => setPopupVisible(visible)}
       >
         <Panel dateValue={dateValue} onChange={onPanelChange} />
       </Popup>

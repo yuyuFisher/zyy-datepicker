@@ -7,7 +7,7 @@ import './popup.css';
 
 export default function Popup(props) {
   const {
-    visible, onVisible, target, children,
+    visible, onVisibilityChange, target, children,
   } = props;
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const { left, top } = position;
@@ -28,7 +28,7 @@ export default function Popup(props) {
       const isClickAway = !paths.includes(nodeRef.current);
 
       if (isClickAway) {
-        onVisible(false);
+        onVisibilityChange(false);
       }
     };
     document.addEventListener('mousedown', callback);
