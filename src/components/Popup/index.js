@@ -61,5 +61,6 @@ export default function Popup(props) {
 
 Popup.propTypes = {
   visible: PropTypes.bool,
-  getPopupPosition: PropTypes.func,
+  target: PropTypes.shape({}), // rootRef
+  onVisibilityChange: PropTypes.func, // function to change visible of Popup
 };
