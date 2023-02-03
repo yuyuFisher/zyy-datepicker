@@ -46,7 +46,6 @@ export default function Popup(props) {
       in={visible}
       timeout={200}
       classNames="popup" // 动画名
-      nodeRef={nodeRef}
     >
       <section
         ref={nodeRef}
