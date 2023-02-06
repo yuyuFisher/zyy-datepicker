@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
-import getDomParents from './utils/getDomParents';
 import './popup.css';
 
 export default function Popup(props) {
@@ -24,10 +23,7 @@ export default function Popup(props) {
 
   useEffect(() => {
     const callback = (e) => {
-      const paths = getDomParents(e.target);
-      const isClickAway = !paths.includes(nodeRef.current);
-
-      if (isClickAway) {
+      if (!nodeRef.current.contains(e.target)) {
         onVisibilityChange(false);
       }
     };
@@ -38,8 +34,10 @@ export default function Popup(props) {
   }, []);
 
   useEffect(() => {
-    setPosition(getPopupPosition());
-  }, []);
+    if (visible) {
+      setPosition(getPopupPosition());
+    }
+  }, [visible]);
 
   return ReactDOM.createPortal(
     <CSSTransition
