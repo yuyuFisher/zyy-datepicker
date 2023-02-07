@@ -64,10 +64,6 @@ export default function Panel(props) {
 }
 
 Panel.propTypes = {
-  dateValue: PropTypes.shape({
-    year: PropTypes.number,
-    month: PropTypes.number,
-    date: PropTypes.number,
-  }),
+  dateValue: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
 };
