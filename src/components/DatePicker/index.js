@@ -37,9 +37,7 @@ export default function DatePicker(props) {
 
   const onPanelChange = (date) => {
     setDateValue(date);
-    setTimeout(() => { // 选完弹框立刻消失
-      setPopupVisible(false);
-    }, 0);
+    setPopupVisible(false);
   };
 
   return (
