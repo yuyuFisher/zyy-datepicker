@@ -7,7 +7,13 @@ export default function PopupDemo() {
 
   return (
     <div>
-      <button type="button" ref={buttonRef} onClick={() => setVisible(true)}>trigger popup</button>
+      <button
+        type="button"
+        ref={buttonRef}
+        onClick={() => setVisible(true)}
+      >
+        trigger popup
+      </button>
       <Popup
         visible={visible}
         targetRef={buttonRef}
