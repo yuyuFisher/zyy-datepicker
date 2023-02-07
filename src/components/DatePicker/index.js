@@ -6,6 +6,7 @@ import formatDate from '../utils/formatDate';
 import DateInputBox from './dateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
+
 import './datePicker.css';
 
 export default function DatePicker(props) {
@@ -42,11 +43,13 @@ export default function DatePicker(props) {
   };
 
   return (
-    <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-      <DateInputBox dateValue={dateString} onClose={handleClear} />
+    <section>
+      <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
+        <DateInputBox dateValue={dateString} onClose={handleClear} />
+      </section>
       <Popup
         visible={popupVisible}
-        target={rootRef}
+        targetRef={rootRef}
         onVisibilityChange={(visible) => setPopupVisible(visible)}
       >
         <Panel dateValue={dateValue} onChange={onPanelChange} />
