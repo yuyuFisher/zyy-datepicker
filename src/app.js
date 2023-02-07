@@ -5,7 +5,11 @@ export default function App() {
   const now = new Date();
   return (
     <DatePicker
-      defaultValue={now}
+      defaultValue={{
+        year: now.getFullYear(),
+        month: now.getMonth(),
+        date: now.getDate(),
+      }}
       onChange={(date) => formatDate(date) ?? '-'}
     />
   );
