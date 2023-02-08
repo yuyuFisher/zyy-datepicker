@@ -12,9 +12,7 @@ import './datePicker.css';
 
 export default function DatePicker(props) {
   const { defaultValue, onChange } = props;
-  const [dateValue, setDateValue] = useState(
-    new Date(defaultValue.year, defaultValue.month, defaultValue.date),
-  );
+  const [dateValue, setDateValue] = useState(defaultValue);
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
   const dateString = useMemo(
@@ -58,10 +56,6 @@ export default function DatePicker(props) {
 }
 
 DatePicker.propTypes = {
-  defaultValue: PropTypes.shape({
-    year: PropTypes.number,
-    month: PropTypes.number,
-    date: PropTypes.number,
-  }),
+  defaultValue: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
 };
