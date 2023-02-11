@@ -2,6 +2,7 @@
 import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
+import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import formatDate from '../utils/formatDate';
 import DateInputBox from './dateInputBox';
@@ -56,6 +57,6 @@ export default function DatePicker(props) {
 }
 
 DatePicker.propTypes = {
-  defaultValue: PropTypes.instanceOf(Date),
+  defaultValue: PropTypes.instanceOf(dayjs),
   onChange: PropTypes.func,
 };

@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import monthCodeMap from './utils/constants';
+import dayjs from 'dayjs';
+import monthCodeMap from './utils/monthCodeMap';
 
 export default function PanelItemOfDate(props) {
   const { onClick, match, item } = props;
@@ -28,7 +29,7 @@ PanelItemOfDate.propTypes = {
   onClick: PropTypes.func,
   match: PropTypes.bool,
   item: PropTypes.shape({
-    itemValue: PropTypes.instanceOf(Date),
+    itemValue: PropTypes.instanceOf(dayjs),
     text: PropTypes.number,
     type: PropTypes.oneOf([
       monthCodeMap.TYPE_PREVIOUS_MONTH,

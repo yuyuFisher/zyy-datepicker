@@ -6,5 +6,5 @@ export default function formatDate(date) {
   if (!date) {
     return '';
   }
-  return `${date.getFullYear()}-${padding(date.getMonth() + 1)}-${padding(date.getDate())}`;
+  return `${date.year()}-${padding(date.month() + 1)}-${padding(date.date())}`;
 }

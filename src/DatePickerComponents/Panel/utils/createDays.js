@@ -1,16 +1,15 @@
-import { getMonthAllDays, getMonthStartAndLastDate } from './getMonthStartAndLastDate';
-import monthCodeMap from './constants';
+import dayjs from 'dayjs';
+import monthCodeMap from './monthCodeMap';
 import isSameDate from './isSameDate';
-import skipTimes from './skipTimes';
-import formatDate from '../../utils/formatDate';
 
-export default function createDays(date) {
+export default function createDays(generateDate) {
+  const date = dayjs(generateDate);
   const list = [];
-  const [firstDate] = getMonthStartAndLastDate(date);
-  const preMonthDate = skipTimes(date, 'month', -1);
 
-  const [, preMonthLastDate] = getMonthStartAndLastDate(preMonthDate);
-  const preMonthLastDay = preMonthLastDate.getDay();
+  const firstDate = date.startOf('month');
+
+  const preMonthDate = date.subtract(1, 'month');
+  const preMonthLastDay = preMonthDate.endOf('month').day();
 
   if (preMonthLastDay !== 6) {
     for (let i = 1; i <= preMonthLastDay + 1; i += 1) {
@@ -18,15 +17,15 @@ export default function createDays(date) {
     }
   }
 
-  const nowMonthDays = getMonthAllDays(date);
+  const nowMonthDays = date.daysInMonth();
   for (let i = 0; i < nowMonthDays; i += 1) {
-    const thisDate = skipTimes(firstDate, 'date', +i);
+    const thisDate = firstDate.add(i, 'day').startOf('day');
     const item = {
       itemValue: thisDate,
-      text: thisDate.getDate(),
+      text: thisDate.date(),
       type: monthCodeMap.TYPE_CURRENT_MONTH,
-      dateValue: formatDate(thisDate),
-      isToday: isSameDate(thisDate, new Date()),
+      dateValue: thisDate.format('YYYY-MM-DD'),
+      isToday: isSameDate(thisDate, dayjs()),
     };
     list.push(item);
   }
