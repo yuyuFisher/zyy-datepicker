@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types';
 import CalendarOrClose from './calendarOrClose';
+import formatDate from './utils/formatDate';
 
-export default function DateInputBox(props) {
-  const { dateValue, onClose } = props;
+export default function DateInputBox({ dateValue, onClose }) {
   return (
     <header>
       <input
         className="date-input"
-        type="text"
-        autoComplete="off"
         placeholder="选择日期"
         disabled
-        value={dateValue}
+        value={formatDate(dateValue)}
       />
       <CalendarOrClose dateValue={dateValue} onClose={onClose} />
     </header>

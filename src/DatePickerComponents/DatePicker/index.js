@@ -1,29 +1,22 @@
 import {
-  useEffect, useMemo, useRef, useState,
+  useEffect, useRef, useState,
 } from 'react';
+import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
-import formatDate from '../utils/formatDate';
 import DateInputBox from './dateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
 
 import './datePicker.css';
 
-export default function DatePicker(props) {
-  const { defaultValue, onChange } = props;
-  const [dateValue, setDateValue] = useState(
-    new Date(defaultValue.year, defaultValue.month, defaultValue.date),
-  );
+export default function DatePicker({ defaultValue, onChange }) {
+  const [dateValue, setDateValue] = useState(defaultValue);
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
-  const dateString = useMemo(
-    () => (dateValue ? formatDate(dateValue) : ''),
-    [dateValue],
-  );
 
   useEffect(() => {
-    onChange?.(dateValue);
-  }, [dateValue]);
+    setDateValue(defaultValue);
+  }, [defaultValue]);
 
   const handleClear = (e) => {
     setDateValue(null);
@@ -36,16 +29,15 @@ export default function DatePicker(props) {
   };
 
   const onPanelChange = (date) => {
+    onChange(date);
     setDateValue(date);
-    setTimeout(() => { // 选完弹框立刻消失
-      setPopupVisible(false);
-    }, 0);
+    setPopupVisible(false);
   };
 
   return (
     <section>
       <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-        <DateInputBox dateValue={dateString} onClose={handleClear} />
+        <DateInputBox dateValue={dateValue} onClose={handleClear} />
       </section>
       <Popup
         visible={popupVisible}
@@ -59,10 +51,6 @@ export default function DatePicker(props) {
 }
 
 DatePicker.propTypes = {
-  defaultValue: PropTypes.shape({
-    year: PropTypes.number,
-    month: PropTypes.number,
-    date: PropTypes.number,
-  }),
+  defaultValue: PropTypes.instanceOf(dayjs),
   onChange: PropTypes.func,
 };

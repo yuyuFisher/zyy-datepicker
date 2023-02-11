@@ -4,13 +4,12 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import './popup.css';
 
-export default function Popup(props) {
-  const {
-    visible, onVisibilityChange, targetRef, children,
-  } = props;
+export default function Popup({
+  visible, onVisibilityChange, targetRef, children,
+}) {
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const { left, top } = position;
-  const nodeRef = useRef(null);
+  const popupRef = useRef(null);
 
   const getPopupPosition = () => {
     if (targetRef.current) {
@@ -23,7 +22,7 @@ export default function Popup(props) {
 
   useEffect(() => {
     const callback = (e) => {
-      if (!nodeRef.current.contains(e.target)) {
+      if (!popupRef.current.contains(e.target)) {
         onVisibilityChange(false);
       }
     };
@@ -46,7 +45,7 @@ export default function Popup(props) {
       classNames="popup" // 动画名
     >
       <section
-        ref={nodeRef}
+        ref={popupRef}
         className="date-popup"
         style={{ left, top }}
       >
@@ -59,6 +58,6 @@ export default function Popup(props) {
 
 Popup.propTypes = {
   visible: PropTypes.bool,
-  targetRef: PropTypes.shape({}), // rootRef
+  targetRef: PropTypes.shape({}), // rootRef用于getPopupPosition
   onVisibilityChange: PropTypes.func, // function to change visible of Popup
 };
