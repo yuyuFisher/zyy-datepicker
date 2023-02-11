@@ -4,10 +4,9 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import './popup.css';
 
-export default function Popup(props) {
-  const {
-    visible, onVisibilityChange, targetRef, children,
-  } = props;
+export default function Popup({
+  visible, onVisibilityChange, targetRef, children,
+}) {
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const { left, top } = position;
   const popupRef = useRef(null);

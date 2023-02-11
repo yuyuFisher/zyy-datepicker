@@ -10,8 +10,7 @@ import './pannel.css';
 
 const now = dayjs();
 
-export default function Panel(props) {
-  const { onChange, dateValue } = props;
+export default function Panel({ onChange, dateValue }) {
   const [date, setDate] = useState(dateValue || now);
   const days = useMemo(() => createDays(date), [date]);
   const panelString = `${date.year()} 年 ${date.month() + 1} 月`;

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import monthCodeMap from './utils/monthCodeMap';
 
-export default function PanelItemOfDate(props) {
-  const { onClick, match, item } = props;
+export default function PanelItemOfDate({ onClick, match, item }) {
   return (
     <div
       onClick={onClick}
