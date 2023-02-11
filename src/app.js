@@ -1,4 +1,3 @@
-import formatDate from './DatePickerComponents/utils/formatDate';
 // import PopupDemo from './components/Demo/Popup';
 import dayjs from 'dayjs';
 import { useState } from 'react';
@@ -10,8 +9,8 @@ export default function App() {
   return (
     <>
       <DatePicker
-        defaultValue={now}
-        onChange={(date) => formatDate(date) ?? '-'}
+        defaultValue={date}
+        onChange={(value) => setDate(value)}
       />
       {/* <PopupDemo /> */}
     </>
