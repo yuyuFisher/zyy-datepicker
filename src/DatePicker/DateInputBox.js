@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import CalendarOrClose from './calendarOrClose';
+import CalendarOrClose from './CalendarOrClose';
 import formatDate from './utils/formatDate';
 
 export default function DateInputBox({ dateValue, onClose }) {

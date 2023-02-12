@@ -3,11 +3,11 @@ import {
 } from 'react';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
-import DateInputBox from './dateInputBox';
+import DateInputBox from './DateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
 
-import './datePicker.css';
+import './index.css';
 
 export default function DatePicker({ defaultValue, onChange }) {
   const [dateValue, setDateValue] = useState(defaultValue);

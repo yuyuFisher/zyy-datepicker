@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
-import './popup.css';
+import './index.css';
 
 export default function Popup({
   visible, onVisibilityChange, targetRef, children,
