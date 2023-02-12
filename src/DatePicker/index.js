@@ -1,25 +1,21 @@
 import {
-  useEffect, useRef, useState,
+  useRef, useState,
 } from 'react';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
+import formatDate from './utils/formatDate';
 import DateInputBox from './DateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
 
 import './index.css';
 
-export default function DatePicker({ defaultValue, onChange }) {
-  const [dateValue, setDateValue] = useState(defaultValue);
+export default function DatePicker({ value, onChange }) {
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
 
-  useEffect(() => {
-    setDateValue(defaultValue);
-  }, [defaultValue]);
-
   const handleClear = (e) => {
-    setDateValue(null);
+    onChange(null);
     setPopupVisible(false);
     e.stopPropagation();
   };
@@ -30,27 +26,26 @@ export default function DatePicker({ defaultValue, onChange }) {
 
   const onPanelChange = (date) => {
     onChange(date);
-    setDateValue(date);
     setPopupVisible(false);
   };
 
   return (
     <section>
       <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-        <DateInputBox dateValue={dateValue} onClose={handleClear} />
+        <DateInputBox value={formatDate(value)} onClear={handleClear} />
       </section>
       <Popup
         visible={popupVisible}
         targetRef={rootRef}
         onVisibilityChange={(visible) => setPopupVisible(visible)}
       >
-        <Panel dateValue={dateValue} onChange={onPanelChange} />
+        <Panel value={value} onChange={onPanelChange} />
       </Popup>
     </section>
   );
 }
 
 DatePicker.propTypes = {
-  defaultValue: PropTypes.instanceOf(dayjs),
+  value: PropTypes.instanceOf(dayjs),
   onChange: PropTypes.func,
 };
