@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import ArrowIcons from './arrowIcons';
+import ArrowIcons from './ArrowIcons';
 
 export default function PanelHeader({
   panelString, onClickPreYear, onClickPreMonth, onClickAddYear, onClickAddMonth,
