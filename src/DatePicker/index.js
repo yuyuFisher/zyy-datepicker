@@ -3,6 +3,7 @@ import {
 } from 'react';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
+import formatDate from './utils/formatDate';
 import DateInputBox from './dateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
@@ -37,7 +38,7 @@ export default function DatePicker({ value, onChange }) {
   return (
     <section>
       <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-        <DateInputBox dateValue={dateValue} onClose={handleClear} />
+        <DateInputBox value={formatDate(dateValue)} onClear={handleClear} />
       </section>
       <Popup
         visible={popupVisible}
