@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import dayjs from 'dayjs';
 import createDays from './utils/createDays';
 import isSameDate from './utils/isSameDate';
@@ -10,18 +10,14 @@ import './index.css';
 
 const now = dayjs();
 
-export default function Panel({ onChange, dateValue }) {
-  const [date, setDate] = useState(dateValue || now);
+export default function Panel({ onChange, value }) {
+  const date = value || now;
   const days = useMemo(() => createDays(date), [date]);
   const panelString = `${date.year()} 年 ${date.month() + 1} 月`;
 
-  useEffect(() => {
-    setDate(dateValue || now);
-  }, [dateValue]);
-
   const jumpTo = (time, type, total) => {
     const newDate = dayjs(time).add(total, type);
-    setDate(newDate);
+    onChange(newDate);
   };
 
   const handleItemClick = (item) => {
@@ -41,7 +37,7 @@ export default function Panel({ onChange, dateValue }) {
       <WeekHeader />
       <footer className="date-panel-body">
         {days.map((item, index) => {
-          const isMatch = isSameDate(item.itemValue, dateValue) && (item.text !== null);
+          const isMatch = isSameDate(item.itemValue, value) && (item.text !== null);
           return (
             <PanelItemOfDate
               key={`key-${String(index)}`}
@@ -63,6 +59,6 @@ export default function Panel({ onChange, dateValue }) {
 }
 
 Panel.propTypes = {
-  dateValue: PropTypes.instanceOf(dayjs),
+  value: PropTypes.instanceOf(dayjs),
   onChange: PropTypes.func,
 };
