@@ -11,7 +11,7 @@ export default function DateInputBox({ dateValue, onClose }) {
         disabled
         value={formatDate(dateValue)}
       />
-      <CalendarOrClose dateValue={dateValue} onClose={onClose} />
+      <CalendarOrClose dateValue={dateValue} onClear={onClose} />
     </header>
   );
 }

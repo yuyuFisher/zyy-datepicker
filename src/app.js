@@ -9,8 +9,8 @@ export default function App() {
   return (
     <>
       <DatePicker
-        defaultValue={date}
-        onChange={(value) => setDate(value)}
+        value={date}
+        onChange={setDate}
       />
       {/* <PopupDemo /> */}
     </>

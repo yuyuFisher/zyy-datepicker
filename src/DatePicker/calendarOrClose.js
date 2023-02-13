@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 export default function CalendarOrClose(props) {
   const {
     dateValue = dayjs(),
-    onClose,
+    onClear,
   } = props;
   return (
     <span
@@ -14,12 +14,12 @@ export default function CalendarOrClose(props) {
       })}
     >
       <span className="iconfont icon-calendar" />
-      <span className="iconfont icon-close" onClick={onClose} />
+      <span className="iconfont icon-close" onClick={onClear} />
     </span>
   );
 }
 
 CalendarOrClose.propTypes = {
   dateValue: PropTypes.string,
-  onClose: PropTypes.func,
+  onClear: PropTypes.func,
 };

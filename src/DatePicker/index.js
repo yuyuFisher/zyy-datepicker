@@ -9,14 +9,14 @@ import Panel from '../Panel';
 
 import './datePicker.css';
 
-export default function DatePicker({ defaultValue, onChange }) {
-  const [dateValue, setDateValue] = useState(defaultValue);
+export default function DatePicker({ value, onChange }) {
+  const [dateValue, setDateValue] = useState(value);
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
 
   useEffect(() => {
-    setDateValue(defaultValue);
-  }, [defaultValue]);
+    setDateValue(value);
+  }, [value]);
 
   const handleClear = (e) => {
     setDateValue(null);
@@ -51,6 +51,6 @@ export default function DatePicker({ defaultValue, onChange }) {
 }
 
 DatePicker.propTypes = {
-  defaultValue: PropTypes.instanceOf(dayjs),
+  value: PropTypes.instanceOf(dayjs),
   onChange: PropTypes.func,
 };
