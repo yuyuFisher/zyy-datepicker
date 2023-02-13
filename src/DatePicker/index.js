@@ -4,7 +4,7 @@ import {
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import formatDate from './utils/formatDate';
-import DateInputBox from './dateInputBox';
+import DateInputBox from './DateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
 

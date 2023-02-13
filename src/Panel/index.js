@@ -3,9 +3,9 @@ import { useMemo } from 'react';
 import dayjs from 'dayjs';
 import createDays from './utils/createDays';
 import isSameDate from './utils/isSameDate';
-import PanelItemOfDate from './panelItemOfDate';
-import WeekHeader from './weekHeader';
-import PanelHeader from './panelHeader';
+import PanelItemOfDate from './PanelItemOfDate';
+import WeekHeader from './WeekHeader';
+import PanelHeader from './PanelHeader';
 import './index.css';
 
 const now = dayjs();
