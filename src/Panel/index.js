@@ -6,7 +6,7 @@ import isSameDate from './utils/isSameDate';
 import PanelItemOfDate from './panelItemOfDate';
 import WeekHeader from './weekHeader';
 import PanelHeader from './panelHeader';
-import './pannel.css';
+import './index.css';
 
 const now = dayjs();
 
