@@ -1,7 +1,7 @@
 // import PopupDemo from './components/Demo/Popup';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import DatePicker from './DatePickerComponents/DatePicker';
+import DatePicker from './DatePicker';
 
 export default function App() {
   const now = dayjs();
