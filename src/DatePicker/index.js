@@ -1,5 +1,5 @@
 import {
-  useEffect, useRef, useState,
+  useRef, useState,
 } from 'react';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
@@ -8,19 +8,14 @@ import DateInputBox from './dateInputBox';
 import Popup from '../Popup';
 import Panel from '../Panel';
 
-import './datePicker.css';
+import './index.css';
 
 export default function DatePicker({ value, onChange }) {
-  const [dateValue, setDateValue] = useState(value);
   const [popupVisible, setPopupVisible] = useState(false);
   const rootRef = useRef(null);
 
-  useEffect(() => {
-    setDateValue(value);
-  }, [value]);
-
   const handleClear = (e) => {
-    setDateValue(null);
+    onChange(null);
     setPopupVisible(false);
     e.stopPropagation();
   };
@@ -31,21 +26,20 @@ export default function DatePicker({ value, onChange }) {
 
   const onPanelChange = (date) => {
     onChange(date);
-    setDateValue(date);
     setPopupVisible(false);
   };
 
   return (
     <section>
       <section className="head" ref={rootRef} onClick={handleDatepickerClick}>
-        <DateInputBox value={formatDate(dateValue)} onClear={handleClear} />
+        <DateInputBox value={formatDate(value)} onClear={handleClear} />
       </section>
       <Popup
         visible={popupVisible}
         targetRef={rootRef}
         onVisibilityChange={(visible) => setPopupVisible(visible)}
       >
-        <Panel dateValue={dateValue} onChange={onPanelChange} />
+        <Panel value={value} onChange={onPanelChange} />
       </Popup>
     </section>
   );
